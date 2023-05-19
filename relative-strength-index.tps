@@ -1,0 +1,11 @@
+//@version=4
+study(title="Relative Strength Index (RSI)", shorttitle="RSI")
+len = input(14, minval=1, title="Length")
+src = input(close, title="Source")
+oversold = input(30, title="Oversold")
+overbought = input(70, title="Overbought")
+rsi = rsi(src, len)
+plot(rsi, color=color.blue, title="RSI")
+band1 = hline(oversold, color=color.red, linestyle=hline.style_dashed, title="Oversold")
+band2 = hline(overbought, color=color.red, linestyle=hline.style_dashed, title="Overbought")
+fill(band1, band2, color=color.red, transp=90, title="Background")
