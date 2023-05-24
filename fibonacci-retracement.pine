@@ -1,0 +1,21 @@
+//@version=5
+indicator("Fibonacci Retracement", overlay=true)
+
+// Define the start and end points for the Fibonacci retracement
+startPrice = input(0.0, title="Start Price")
+endPrice = input(0.0, title="End Price")
+
+// Calculate the Fibonacci retracement levels
+fib618 = startPrice + 0.618 * (endPrice - startPrice)
+fib382 = startPrice + 0.382 * (endPrice - startPrice)
+fib236 = startPrice + 0.236 * (endPrice - startPrice)
+fib100 = endPrice
+
+// Plot the Fibonacci retracement levels
+plot(fib618, color=color.red, title="61.8%")
+plot(fib382, color=color.orange, title="38.2%")
+plot(fib236, color=color.yellow, title="23.6%")
+plot(fib100, color=color.green, title="100%")
+
+// Plot the Fibonacci retracement area
+fill(fib618, fib382, color=color.blue, transp=80, title="Retracement Area")
