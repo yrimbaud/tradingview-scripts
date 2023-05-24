@@ -1,0 +1,15 @@
+//@version=5
+indicator("ADX", overlay=false)
+
+// ADX parameters
+adxLength = input(14, title="ADX Length")
+
+// Calculate the ADX values
+[_, adxValue] = dmi(adxLength)
+
+// Plotting the ADX line
+plot(adxValue, color=color.blue, title="ADX")
+
+// Plotting the ADX thresholds
+plot(20, color=color.red, title="ADX Threshold 1")
+plot(25, color=color.orange, title="ADX Threshold 2")
