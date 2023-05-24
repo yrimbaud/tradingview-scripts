@@ -1,0 +1,21 @@
+//@version=5
+indicator("MACD", overlay=false)
+
+// MACD parameters
+macdLength = input(12, title="MACD Length")
+macdSource = close
+macdShortLength = input(26, title="MACD Short Length")
+macdLongLength = input(9, title="MACD Long Length")
+
+// MACD calculation
+[macdLine, signalLine, _] = macd(macdSource, macdShortLength, macdLongLength)
+
+// Plotting MACD Line
+plot(macdLine, color=color.blue, title="MACD Line")
+
+// Plotting Signal Line
+plot(signalLine, color=color.red, title="Signal Line")
+
+// Plotting MACD Histogram
+histogramColor = macdLine > signalLine ? color.green : color.red
+plot(macdLine - signalLine, color=histogramColor, style=plot.style_columns, title="MACD Histogram")
